@@ -1,7 +1,9 @@
-function App() {
+import StartGame from './components/StartGame';
+
+const App = () => {
     return (
         <>
-            <h1>Teste</h1>
+            <StartGame />
         </>
     )
 }
