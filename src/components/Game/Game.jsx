@@ -39,7 +39,7 @@ const StartGame = ({
                 <div className="w-auto p-2 text-center border-8 border-blue-300 flex justify-center">
                     {letters.map((l, i) => (
                         guessedLetters.includes(l) ? (
-                            <span key={i} className="w-20 h-20 text-white text-6xl font-bold border-8 border-blue-300 bg-black/30 flex justify-center items-center letter">{l}</span>
+                            <span key={i} className="w-20 h-20 text-white text-6xl font-bold border-8 border-green-300 bg-black/30 flex justify-center items-center letter">{l}</span>
                         ) : (
                             <span key={i} className="w-20 h-20 text-purple-900 text-6xl font-bold border-8 border-blue-300 bg-white blankSquare"></span>
                         )

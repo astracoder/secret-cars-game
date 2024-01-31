@@ -37,6 +37,8 @@ const App = () => {
     }
 
     const startGame = () => {
+        clearAllStates();
+
         const [brand, model] = getBrandAndModel();
         let modelLetters = model.split('');
         modelLetters = modelLetters.map(l => l.toUpperCase());
@@ -59,7 +61,7 @@ const App = () => {
                 letterGame
             ]);
 
-            setScore(currentScore => currentScore + 100);
+            setScore(currentScore => currentScore += 50);
         } else {
             setWrongLetters(currentWrongLetters => [
                 ...currentWrongLetters,
@@ -87,6 +89,15 @@ const App = () => {
             setGameStage(stages[2].name);
         }
     }, [chances]);
+
+    useEffect(() => {
+        const uniqueLetters = [...new Set(letters)]
+        
+        if(uniqueLetters.length === guessedLetters.length && gameStage === stages[1].name) {
+            setScore(currentScore => (currentScore += 100));
+            startGame();
+        }
+    }, [guessedLetters]);
 
     return (
         <>
