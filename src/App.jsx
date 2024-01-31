@@ -19,6 +19,11 @@ const App = () => {
     const [pickedModel, setPickedModel] = useState('');
     const [letters, setLetters] = useState([]);
 
+    const [guessedLetters, setGuessedLetters] = useState([]);
+    const [wrongLetters, setWrongLetters] = useState([]);
+    const [chances, setChances] = useState(3);
+    const [score, setScore] = useState(0);
+
     const getBrandAndModel = () => {
         //Pegando a 'chave' do obj 
         const brands = Object.keys(cars);
@@ -36,17 +41,15 @@ const App = () => {
         let modelLetters = model.split('');
         modelLetters = modelLetters.map(l => l.toUpperCase());
 
-        console.log(brand, model, modelLetters);
-
-        setPickedBrand(pickedBrand);
-        setPickedModel(pickedModel);
-        setLetters(letters);
+        setPickedBrand(brand);
+        setPickedModel(model);
+        setLetters(modelLetters);
 
         setGameStage(stages[1].name);
     }
 
-    const verifyLetter = () => {
-        setGameStage(stages[2].name)
+    const verifyLetter = (letter) => {
+        console.log(letter);
     }
 
     const retryStage = () => {
@@ -55,9 +58,25 @@ const App = () => {
 
     return (
         <>
-            {gameStage === 'start' && <StartGame startGame={startGame}/>}
-            {gameStage === 'ingame' && <Game verifyLetter={verifyLetter}/>}
-            {gameStage === 'end' && <EndGame retryStage={retryStage}/>}
+            {gameStage === 'start' && 
+            <StartGame 
+                startGame={startGame}
+            />}
+            {gameStage === 'ingame' && 
+            <Game 
+                verifyLetter={verifyLetter}
+                pickedBrand={pickedBrand}
+                pickedModel={pickedModel}
+                letters={letters}
+                guessedLetters={guessedLetters}
+                wrongLetters={wrongLetters}
+                chances={chances}
+                score={score}
+            />}
+            {gameStage === 'end' && 
+            <EndGame 
+                retryStage={retryStage}
+            />}
         </>
     )
 }
