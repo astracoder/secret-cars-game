@@ -48,13 +48,45 @@ const App = () => {
         setGameStage(stages[1].name);
     }
 
-    const verifyLetter = (letter) => {
-        console.log(letter);
+    const verifyLetter = (letterGame) => {
+        if(guessedLetters.includes(letterGame) || wrongLetters.includes(letterGame)) {
+            return;
+        }
+
+        if(letters.includes(letterGame)) {
+            setGuessedLetters(currentGuessedLetters => [
+                ...currentGuessedLetters,
+                letterGame
+            ]);
+
+            setScore(currentScore => currentScore + 100);
+        } else {
+            setWrongLetters(currentWrongLetters => [
+                ...currentWrongLetters,
+                letterGame
+            ]);
+
+            setChances(currentChances => currentChances - 1);
+        }
     }
 
     const retryStage = () => {
+        setScore(0);
+        setChances(3);
         setGameStage(stages[0].name)
     }
+
+    const clearAllStates = () => {
+        setGuessedLetters([]);
+        setWrongLetters([]);
+    }
+
+    useEffect(() => {
+        if(chances <= 0) {
+            clearAllStates()
+            setGameStage(stages[2].name);
+        }
+    }, [chances]);
 
     return (
         <>
@@ -76,6 +108,7 @@ const App = () => {
             {gameStage === 'end' && 
             <EndGame 
                 retryStage={retryStage}
+                score={score}
             />}
         </>
     )

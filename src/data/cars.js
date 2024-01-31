@@ -1,6 +1,6 @@
 export const carsList = {
-    Volkswagem: ['Gol', 'Parati', 'Saveiro', 'Golf', 'Quantum', 'Amarok'],
-    Nissan: ['Sentra', 'Frontier', 'Kicks', 'Versa', 'Skyline'],
-    Subaru: ['Impreza', 'Legacy', 'Forest', '22b', 'Vivio'],
-    Honda: ['Civic', 'Accord', 'Fit']
+    VOLKSWAGEN: ['GOL', 'PARATI', 'SAVEIRO', 'GOLF', 'QUANTUM', 'AMAROK'],
+    NISSAN: ['SENTRA', 'FRONTIER', 'KICKS', 'VERSA', 'SKYLINE'],
+    SUBARU: ['IMPREZA', 'LEGACY', 'FOREST', '22B', 'VIVIO'],
+    HONDA: ['CIVIC', 'ACCORD', 'FIT']
 }

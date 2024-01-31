@@ -13,11 +13,20 @@ const StartGame = ({
     const [letter, setLetter] = useState('');
     const refInput = useRef(null);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        verifyLetter(letter);
+    const clearAndFocus = () => {
         setLetter('');
         refInput.current.focus();
+    }
+
+    const transformLetterUpperCase = () => {
+        return letter.toUpperCase();
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const letterUpper = transformLetterUpperCase();
+        verifyLetter(letterUpper);
+        clearAndFocus();
     };
 
     return (
@@ -27,10 +36,10 @@ const StartGame = ({
             <h3 className="text-white text-center text-xl mb-5 tips">Dica sobre a palavra: <span className="text-purple-400 underline">{pickedBrand}</span></h3>
             <p className="text-green-300 text-center text-xl mb-5 bg-white/10 w-96 rounded-md">Você ainda tem <span className="text-green-500 underline">{chances}</span> tentativas!</p>
             <div className="flex justify-center">
-                <div className="w-auto p-1 text-center border-8 border-blue-300 flex justify-center">
+                <div className="w-auto p-2 text-center border-8 border-blue-300 flex justify-center">
                     {letters.map((l, i) => (
                         guessedLetters.includes(l) ? (
-                            <span key={i} className="w-20 h-20 text-purple-900 text-6xl font-bold border-8 border-blue-300 bg-white letter">{l}</span>
+                            <span key={i} className="w-20 h-20 text-white text-6xl font-bold border-8 border-blue-300 bg-black/30 flex justify-center items-center letter">{l}</span>
                         ) : (
                             <span key={i} className="w-20 h-20 text-purple-900 text-6xl font-bold border-8 border-blue-300 bg-white blankSquare"></span>
                         )
@@ -42,7 +51,7 @@ const StartGame = ({
                 <form onSubmit={handleSubmit} className="flex justify-center items-center mt-5">
                     <input 
                         onChange={(e) => setLetter(e.target.value)} 
-                        className="w-10 h-10 text-center text-3xl mr-2 rounded-md uppercase" 
+                        className="w-14 h-14 text-gray-700 font-bold text-center text-3xl mr-2 rounded-md uppercase" 
                         type="text" 
                         name="letter" 
                         maxLength="1" 
@@ -50,13 +59,13 @@ const StartGame = ({
                         value={letter}
                         ref={refInput}
                     />
-                    <button className="p-3 text-2xl text-white rounded-md bg-purple-500 hover:bg-purple-600 transition ease-in-ou">Jogar</button>
+                    <button className="p-3 text-2xl text-white rounded-md bg-green-500 hover:bg-green-600 transition ease-in-ou">Jogar</button>
                 </form>
             </div>
             <div className="text-center text-white wrongLettersContainer">
                 <p className="text-blue-200 mt-4 mb-2">Letras já utilizadas:</p>
                 {wrongLetters.map((l, i) => (
-                    <span key={i} className="text-2xl text-gray-900 bg-red-200 p-1 pt-0 pb-0 rounded-md mr-2">{l}, </span>
+                    <span key={i} className="text-2xl text-gray-900 bg-red-200 p-1 pt-0 pb-0 rounded-md mr-2">{l}</span>
                 ))}
             </div>
         </main>
