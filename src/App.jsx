@@ -15,7 +15,33 @@ const App = () => {
     const [gameStage, setGameStage] = useState(stages[0].name);
     const [cars] = useState(carsList);
 
+    const [pickedBrand, setPickedBrand] = useState('');
+    const [pickedModel, setPickedModel] = useState('');
+    const [letters, setLetters] = useState([]);
+
+    const getBrandAndModel = () => {
+        //Pegando a 'chave' do obj 
+        const brands = Object.keys(cars);
+        const brand = brands[Math.floor(Math.random() * brands.length)];
+
+        //Pegando os valores da chave
+        const models = cars[brand];
+        const model = models[Math.floor(Math.random() * models.length)];
+        
+        return [brand, model];
+    }
+
     const startGame = () => {
+        const [brand, model] = getBrandAndModel();
+        let modelLetters = model.split('');
+        modelLetters = modelLetters.map(l => l.toUpperCase());
+
+        console.log(brand, model, modelLetters);
+
+        setPickedBrand(pickedBrand);
+        setPickedModel(pickedModel);
+        setLetters(letters);
+
         setGameStage(stages[1].name);
     }
 
