@@ -15,6 +15,9 @@ const stages = [
     {id: 3, name: 'end'}
 ]
 
+let isSoundPlaying = false;
+let previousModel = null;
+
 const App = () => {
     const [gameStage, setGameStage] = useState(stages[0].name);
     const [cars] = useState(carsList);
@@ -37,15 +40,13 @@ const App = () => {
     }
 
     const backgroundSoundPlay = () => {
-        const setBackgroundSound = new Audio(backgroundSound);
-        setBackgroundSound.volume = 0.1;
-        
-        setBackgroundSound.addEventListener('loadeddata', () => {
+        if(!isSoundPlaying) {
+            const setBackgroundSound = new Audio(backgroundSound);
+            setBackgroundSound.volume = 0.04;
             setBackgroundSound.play();
-        })
+            isSoundPlaying = true;
+       }
     }
-
-    backgroundSoundPlay();
 
     const getBrandAndModel = () => {
         //Pegando a 'chave' do obj 
@@ -54,13 +55,21 @@ const App = () => {
 
         //Pegando os valores da chave
         const models = cars[brand];
-        const model = models[Math.floor(Math.random() * models.length)];
-        
+    
+        let model;
+
+        do {
+            model = models[Math.floor(Math.random() * models.length)];
+        } while(model === previousModel);
+
+        previousModel = model;
+
         return [brand, model];
     }
 
     const startGame = () => {
         clearAllStates();
+        // backgroundSoundPlay(); //Start background sound
 
         const [brand, model] = getBrandAndModel();
         let modelLetters = model.split('');
