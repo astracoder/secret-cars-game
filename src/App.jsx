@@ -5,6 +5,10 @@ import StartGame from './components/StartGame/StartGame.jsx';
 import Game from './components/Game/Game.jsx';
 import EndGame from './components/EndGame/EndGame.jsx';
 
+import guessedSound from './assets/guessed.mp3';
+import wrongSound from './assets/wrong.mp3';
+import backgroundSound from './assets/background.mp3';
+
 const stages = [
     {id: 1, name: 'start'},
     {id: 2, name: 'ingame'},
@@ -23,6 +27,25 @@ const App = () => {
     const [wrongLetters, setWrongLetters] = useState([]);
     const [chances, setChances] = useState(3);
     const [score, setScore] = useState(0);
+
+    const guessedSoundPlay = () => {
+        new Audio(guessedSound).play();
+    }
+
+    const wrongSoundPlay = () => {
+        new Audio(wrongSound).play();
+    }
+
+    const backgroundSoundPlay = () => {
+        const setBackgroundSound = new Audio(backgroundSound);
+        setBackgroundSound.volume = 0.1;
+        
+        setBackgroundSound.addEventListener('loadeddata', () => {
+            setBackgroundSound.play();
+        })
+    }
+
+    backgroundSoundPlay();
 
     const getBrandAndModel = () => {
         //Pegando a 'chave' do obj 
@@ -61,12 +84,16 @@ const App = () => {
                 letterGame
             ]);
 
+            guessedSoundPlay();
+
             setScore(currentScore => currentScore += 50);
         } else {
             setWrongLetters(currentWrongLetters => [
                 ...currentWrongLetters,
                 letterGame
             ]);
+
+            wrongSoundPlay();
 
             setChances(currentChances => currentChances - 1);
         }
