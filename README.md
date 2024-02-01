@@ -20,6 +20,10 @@
 - 🎯 Meta: **I need to make some adjustments to the design and colors**
 
 <img src="/background.png">
+
+### `clone repository`
+
+git clone git@github.com:astracoder/secret-cars-game.git
  
 ### `npm install`
 
