@@ -19,7 +19,7 @@
 
 - 🎯 Meta: **I need to make some adjustments to the design and colors**
 
-<img src="/background.png">
+<img src="/wallpaper.png">
 
 ### `clone repository`
 
