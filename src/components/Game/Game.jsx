@@ -40,12 +40,12 @@ const StartGame = ({
                 <h3 className="text-white text-center text-xl mb-5 tips">Dica sobre a palavra: <span className="text-purple-400 underline">{pickedBrand}</span></h3>
                 <p className="text-green-300 text-center text-xl mb-5 bg-white/10 w-96 rounded-md">Você ainda tem <span className="text-green-500 underline">{chances}</span> tentativas!</p>
                 <div className="flex justify-center">
-                    <div className="w-auto p-2 text-center border-8 border-blue-300 flex justify-center">
+                    <div className="w-auto p-2 text-center border-8 border-blue-300 rounded-lg flex justify-center">
                         {letters.map((l, i) => (
                             guessedLetters.includes(l) ? (
-                                <span key={i} className="w-20 h-20 text-white text-6xl font-bold border-8 border-green-300 bg-black/30 flex justify-center items-center letter">{l}</span>
+                                <span key={i} className="w-20 h-20 text-white text-6xl font-bold border-8 border-green-300 rounded-lgbg-black/30 flex justify-center items-center letter">{l}</span>
                             ) : (
-                                <span key={i} className="w-20 h-20 text-purple-900 text-6xl font-bold border-8 border-black/95 bg-white blankSquare"></span>
+                                <span key={i} className="w-20 h-20 text-purple-900 text-6xl font-bold border-8 border-black/95 bg-white"></span>
                             )
                         ))}
                     </div>
