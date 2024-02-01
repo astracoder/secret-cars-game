@@ -13,11 +13,13 @@
   This game was made to look like a famous TV show. You have to get the word right by guessing the letters.
 </p>
 
-- 🎯 Meta: **I need to add sounds and animations**
+- ✔ Meta: **I need to add sounds and animations**
 
 - ✔ Meta: **I need to add different backgrounds to the screens**
 
 - ✔ Meta: **I need to make some adjustments to the design and colors**
+
+- ❌ Meta: **I need to organize structure and code*
 
 <img src="/wallpaper.png">
 
