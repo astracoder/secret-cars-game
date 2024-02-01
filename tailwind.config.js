@@ -6,7 +6,11 @@ export default {
   ],
   theme: {
     extend: {
-      backgroundImage: { 'carOne': "url('/background.png')" },
+      backgroundImage: ({
+        'start-game': "url('/background.jpg')",
+        'game': "url('/background2.jpg')",
+        'end-game': "url('/background3.jpg')",
+      })
     },
   },
   plugins: [],
