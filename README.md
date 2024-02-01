@@ -22,6 +22,7 @@
 - ❌ Meta: **I need to organize structure and code*
 
 <img src="/wallpaper.png">
+<img src="/wallpaper2.png">
 
 ### `clone repository`
 
