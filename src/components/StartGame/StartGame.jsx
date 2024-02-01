@@ -1,7 +1,6 @@
 const StartGame = ({ startGame }) => {
     return (
-        <main className="w-screen h-screen flex justify-center justify-items-center items-center flex-col backdrop-blur-sm bg-black/60
-        ">
+        <main className="bg-carOne bg-cover bg-center w-screen h-screen flex justify-center justify-items-center items-center flex-col backdrop-blur-sm bg-black/60">
             {/* <h1 className="text-8xl text-white text-center font-bold drop-shadow-2xl">Secret <span>Cars</span></h1> */}
             <img className="h-1/2 -mb-24" src="/SecretCarsLogo.png" alt="Logo Secret Car" />
             <p className="text-2xl text-blue-300 text-center drop-shadow-2xl">Clique no botão para iniciar o jogo</p>

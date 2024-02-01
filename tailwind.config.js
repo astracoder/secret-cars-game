@@ -5,7 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: { 'carOne': "url('/background.png')" },
+    },
   },
   plugins: [],
 }
